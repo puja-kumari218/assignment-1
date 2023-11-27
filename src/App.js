@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import "./responsive.css";
 import "react-toastify/dist/ReactToastify.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import SingleProduct from "./screens/SingleProduct";
 import Login from "./screens/Login";
@@ -19,26 +19,26 @@ import PrivateRouter from "./PrivateRouter";
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/" component={HomeScreen} exact />
-        <Route path="/search/:keyword" component={HomeScreen} exact />
-        <Route path="/page/:pagenumber" component={HomeScreen} exact />
+      <Routes>
+        <Route path="/" element={<HomeScreen />} exact />
+        <Route path="/search/:keyword" element={<HomeScreen />} exact />
+        <Route path="/page/:pagenumber" element={<HomeScreen />} exact />
         <Route
           path="/search/:keyword/page/:pageNumber"
-          component={HomeScreen}
+          element={<HomeScreen/>}
           exact
         />
-        <Route path="/products/:id" component={SingleProduct} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <PrivateRouter path="/profile" component={ProfileScreen} />
-        <Route path="/cart/:id?" component={CartScreen} />
-        <PrivateRouter path="/shipping" component={ShippingScreen} />
-        <PrivateRouter path="/payment" component={PaymentScreen} />
-        <PrivateRouter path="/placeorder" component={PlaceOrderScreen} />
-        <PrivateRouter path="/order/:id" component={OrderScreen} />
-        <Route path="*" component={NotFound} />
-      </Switch>
+        <Route path="/products/:id" element={<SingleProduct />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <PrivateRouter path="/profile" element={<ProfileScreen />} />
+        <Route path="/cart/:id?" element={<CartScreen />} />
+        <PrivateRouter path="/shipping" element={<ShippingScreen />} />
+        <PrivateRouter path="/payment" element={<PaymentScreen />} />
+        <PrivateRouter path="/placeorder" element={<PlaceOrderScreen />} />
+        <PrivateRouter path="/order/:id" element={<OrderScreen />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </Router>
   );
 };
